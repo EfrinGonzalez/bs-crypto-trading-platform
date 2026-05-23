@@ -1,0 +1,13 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: { name: bs-api }
+spec:
+  replicas: 2
+  selector: { matchLabels: { app: bs-api } }
+  template:
+    metadata: { labels: { app: bs-api } }
+    spec:
+      containers:
+      - name: api
+        image: ghcr.io/org/bs-api:latest
+        ports: [{ containerPort: 8080 }]
